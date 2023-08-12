@@ -2,8 +2,8 @@
 
 {% block contenido %}
 
-<h1>Bienvenido a la UTN {{user.first_name}}</h1>
+<center><h1>Bienvenido a la UTN {{user.first_name}}</h1></center>
 <div>
-    <img src="{{ user.avatar.imagen.url }}" style="max-width: 300px;"/>
+    <center><img src="{{ user.avatar.imagen.url }}" style="max-width: 300px;"/></center>
 </div>
 {% endblock contenido %}

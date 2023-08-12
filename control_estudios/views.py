@@ -14,19 +14,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
 
-
-# NO USADO. ver vista basada en clases abajo
-# def listar_estudiantes(request):
-#     contexto = {
-#         "profesor": "Pedro",
-#         "estudiantes": Estudiante.objects.all(),
-#     }
-#     http_response = render(
-#         request=request,
-#         template_name='control_estudios/lista_estudiantes.html',
-#         context=contexto,
-#     )
-#     return http_response
 @login_required
 def listar_cursos(request):
     # Data de pruebas, más adelante la llenaremos con nuestros cursos de verdad
