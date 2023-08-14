@@ -22,27 +22,25 @@ Lista de cursos
       <th>ID</th>
       <th>Nombre</th>
       <th>Comision</th>
+      <th>Creador</th>
       <th></th>
-      <th></th>
-    </tr>
-    {% for curso in cursos %}
-    <tr>
-      <td>{{ curso.id }}</td>
-      <td>{{ curso.nombre }}</td>
-      <td>{{ curso.comision }}</td>
-      <td>{{ curso.creador }}</td>
-      <td>
-        <a class="btn btn-link" href="{% url 'editar_curso' curso.id %}">editar</a>
-      </td>
-      <td>
-        <form action="{% url 'eliminar_curso' curso.id %}" method="post">
-          {% csrf_token %}
-          <input type="submit" class="btn btn-link" value="eliminar"/>
-        </form>
-      </td>
-    </tr>
-    {% endfor %}
+    </tr>  
+    {% if cursos %}
+      <ul>
+        {% for curso in cursos %}
+          <li>
+            {{ curso.id }}
+            {{ curso.nombre }}
+            {{ curso.comision }}
+            {{ curso.creador }}
+            <a href={% url 'editar_curso' curso.id %}>Editar</a>
+            <a href={% url 'eliminar_curso' curso.id %}>Eliminar</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      No se encontraron datos.
+    {% endif %}
   </tbody>
 </table>
-
 {% endblock contenido %}
