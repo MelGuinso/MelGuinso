@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from sistema_coder.views import saludar, saludar_con_fecha, inicio
+from sistema_coder.views import *
 from perfiles import urls
 
 from django.conf import settings
@@ -30,6 +30,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("estudios/", include("control_estudios.urls")),
     path('perfiles/', include ('perfiles.urls')),
+    path('acerca/',acerca, name = 'acerca')
 
     # URLs con fines academicos
     # La ruta de la URL puede ser diferente al nombre de la view

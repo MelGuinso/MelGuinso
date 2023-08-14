@@ -25,3 +25,12 @@ def inicio(request):
         context=contexto,
     )
     return http_response
+
+def acerca(request):
+    contexto = {}
+    http_response = render(
+        request=request,
+        template_name='acerca_de_mi.html',
+        context=contexto,
+    )
+    return http_response

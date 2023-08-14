@@ -21,7 +21,7 @@ def listar_cursos(request):
     }
     http_response = render(
         request=request,
-        template_name='/templates/lista_cursos.html',
+        template_name='lista_cursos.html',
         context=contexto,
     )
     return http_response
@@ -143,26 +143,26 @@ class EstudianteListView(ListView):
     template_name = 'lista_estudiantes.html'
 
 
-class EstudianteCreateView(CreateView):
+class EstudianteCreateView(LoginRequiredMixin, CreateView):
     model = Estudiante
     fields = ('nombre', 'apellido', 'email', 'dni')
     template_name = 'estudiante_form.html'
     success_url = reverse_lazy('lista_estudiantes')
 
 
-class EstudianteDetailView(DetailView):
+class EstudianteDetailView(LoginRequiredMixin, DetailView):
     model = Estudiante
     template_name = 'estudiante_form.html'
     success_url = reverse_lazy('lista_estudiantes')
 
-class EstudianteUpdateView(UpdateView):
+class EstudianteUpdateView(LoginRequiredMixin, UpdateView):
     model = Estudiante
     template_name = 'estudiante_form.html'
     fields = ('nombre', 'apellido', 'email', 'dni')
     success_url = reverse_lazy('lista_estudiantes')
 
 
-class EstudianteDeleteView(DeleteView):
+class EstudianteDeleteView(LoginRequiredMixin, DeleteView):
     model = Estudiante
     template_name = 'estudiante_form.html'
     success_url = reverse_lazy('lista_estudiantes')
