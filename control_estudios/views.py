@@ -14,18 +14,14 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
 
-@login_required
 def listar_cursos(request):
     # Data de pruebas, más adelante la llenaremos con nuestros cursos de verdad
-    if not request.user.is_authenticated:
-        return redirect('../perfiles/login/')
-    else:
-        contexto = {
+    contexto = {
         "cursos": Curso.objects.all(),
     }
     http_response = render(
         request=request,
-        template_name='lista_cursos.html',
+        template_name='/templates/lista_cursos.html',
         context=contexto,
     )
     return http_response
@@ -54,6 +50,7 @@ def crear_curso_version_1(request):
             template_name='formulario_curso_a_mano.html',
         )
         return http_response
+    
 @login_required
 def crear_curso(request):
     if request.method == "POST":
@@ -157,7 +154,6 @@ class EstudianteDetailView(DetailView):
     model = Estudiante
     template_name = 'estudiante_form.html'
     success_url = reverse_lazy('lista_estudiantes')
-
 
 class EstudianteUpdateView(UpdateView):
     model = Estudiante
